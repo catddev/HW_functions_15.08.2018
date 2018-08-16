@@ -1,8 +1,9 @@
-﻿//#include "stdafx.h"
+﻿#include "stdafx.h"
 #include <iostream>
 #include <iomanip>
 #include <math.h>
 #include<ctime>
+#include<string>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int sumRange(int x, int y) {
 
 //3.	Написать функцию для округления заданного числа с заданной точностью.
 int roundNum(int x, int y) { // где Y - кол-во разрядов, на сколько нужно округлить,
-	// если считать разряды справа налево
+							 // если считать разряды справа налево
 	int n = y;
 	while (n != 0)
 	{
@@ -167,7 +168,7 @@ void sort(t arr[], int size, string type, bool direction) {
 //и возвращает количество цифр в числе и процент четных цифр.
 //Рекомендации: Воспользуйтесь передачей параметров по ссылке.
 void digitPercent(int x, int &n, double &p) {
-	int k=0;
+	int k = 0;
 	n = 0;
 	while (x != 0)
 	{
@@ -175,7 +176,7 @@ void digitPercent(int x, int &n, double &p) {
 		x /= 10;
 		n++;
 	}
-	p = double(k) / double(n)* 100;
+	p = double(k) / double(n) * 100;
 }
 
 //6.	*Напишите функцию, которая принимает массив и количество элементов
@@ -238,12 +239,12 @@ int main()
 			int a[] = { 1, 6, 4, 2, 3, 5 };
 			double b[] = { 1.5, 2, 3.5, 4, 5, 6 };
 
-			string type = "";
+			string type;
 
 			bool direction;
 			cout << "Выберите тип сортировки: bubble, selection, insert" << endl;
 			cin >> type;
-			/*scanf_s("%s", type);*/
+
 			cout << "1 - по возрастанию, 0 - по убыванию" << endl;
 			cin >> direction;
 
@@ -255,7 +256,7 @@ int main()
 
 			sort(b, 6, type, direction);
 			for (int i = 0; i < 6; i++)
-			cout << a[i] << " ";
+				cout << a[i] << " ";
 			cout << endl << endl;
 		}
 		break;
