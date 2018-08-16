@@ -1,7 +1,7 @@
 ﻿//#include "stdafx.h"
 #include <iostream>
 #include <iomanip>
-#include<math.h>
+#include <math.h>
 #include<ctime>
 
 using namespace std;
@@ -74,18 +74,19 @@ int roundNum(int x, int y) { // где Y - кол-во разрядов, на с
 //и порядок сортировки(по убыванию, по возрастанию – логическая переменная).
 //Функция сортирует массив.
 //Реализовать перегрузки для целых и вещественных чисел.
-void sort(int arr[], int size, char str[], bool direction) {
+template<typename t>
+void sort(t arr[], int size, string type, bool direction) {
 	int i = 0;
 	if (direction)
 	{
-		if (str == "bubble")
+		if (type == "bubble")
 		{
 			for (int pass = 0; pass<size - 1; pass++)
 				for (i = 0; i < size - 1; i++)
 					if (arr[i] > arr[i + 1])
 						swap(arr[i], arr[i + 1]);
 		}
-		else if (str == "selection")
+		else if (type == "selection")
 		{
 			double min_e;
 			int k = 0;
@@ -104,7 +105,7 @@ void sort(int arr[], int size, char str[], bool direction) {
 				if (min_e<arr[pass]) swap(arr[k], arr[pass]);
 			}
 		}
-		else if (str == "insert")
+		else if (type == "insert")
 		{
 			for (int pass = 1; pass < size; pass++)
 			{
@@ -116,18 +117,18 @@ void sort(int arr[], int size, char str[], bool direction) {
 				}
 			}
 		}
-		else cout << "error: wrong sort type" << endl << endl;
+		else { cout << "error: wrong sort type" << endl << endl; }
 	}
 	else
 	{
-		if (str == "bubble")
+		if (type == "bubble")
 		{
 			for (int pass = 0; pass<size - 1; pass++)
 				for (i = 0; i < size - 1; i++)
 					if (arr[i] < arr[i + 1])
 						swap(arr[i], arr[i + 1]);
 		}
-		else if (str == "selection")
+		else if (type == "selection")
 		{
 			double max_e;
 			int k = 0;
@@ -146,97 +147,7 @@ void sort(int arr[], int size, char str[], bool direction) {
 				if (max_e>arr[pass]) swap(arr[k], arr[pass]);
 			}
 		}
-		else if (str == "insert")
-		{
-			for (int pass = 1; pass < size; pass++)
-			{
-				i = pass;
-				while ((arr[i] > arr[i - 1]) && i > 0)
-				{
-					swap(arr[i], arr[i - 1]);
-					i--;
-				}
-			}
-		}
-		else cout << "error: wrong sort type" << endl << endl;
-	}
-}
-// перегрузка
-void sort(double arr[], int size, char str[], bool direction) {
-	int i = 0;
-	if (direction)
-	{
-		if (str == "bubble")
-		{
-			for (int pass = 0; pass<size - 1; pass++)
-				for (i = 0; i < size - 1; i++)
-					if (arr[i] > arr[i + 1])
-						swap(arr[i], arr[i + 1]);
-		}
-
-		else if (str == "selection")
-		{
-			double min_e;
-			int k = 0;
-			for (int pass = 0; pass < size - 1; pass++)
-			{
-				min_e = arr[size - 1];
-
-				for (i = pass + 1; i < size; i++)
-				{
-					if (arr[i] <= min_e)
-					{
-						min_e = arr[i];
-						k = i;
-					}
-				}
-				if (min_e<arr[pass]) swap(arr[k], arr[pass]);
-			}
-		}
-
-		else if (str == "insert")
-		{
-			for (int pass = 1; pass < size; pass++)
-			{
-				i = pass;
-				while ((arr[i] < arr[i - 1]) && i > 0)
-				{
-					swap(arr[i], arr[i - 1]);
-					i--;
-				}
-			}
-		}
-		else cout << "error: wrong sort type" << endl << endl;
-	}
-	else
-	{
-		if (str == "bubble")
-		{
-			for (int pass = 0; pass<size - 1; pass++)
-				for (i = 0; i < size - 1; i++)
-					if (arr[i] < arr[i + 1])
-						swap(arr[i], arr[i + 1]);
-		}
-		else if (str == "selection")
-		{
-			double max_e;
-			int k = 0;
-			for (int pass = 0; pass < size - 1; pass++)
-			{
-				max_e = arr[size - 1];
-
-				for (i = pass + 1; i < size; i++)
-				{
-					if (arr[i] >= max_e)
-					{
-						max_e = arr[i];
-						k = i;
-					}
-				}
-				if (max_e>arr[pass]) swap(arr[k], arr[pass]);
-			}
-		}
-		else if (str == "insert")
+		else if (type == "insert")
 		{
 			for (int pass = 1; pass < size; pass++)
 			{
