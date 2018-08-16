@@ -238,36 +238,25 @@ int main()
 			int a[] = { 1, 6, 4, 2, 3, 5 };
 			double b[] = { 1.5, 2, 3.5, 4, 5, 6 };
 
-			char type[10];
+			string type = "";
+
 			bool direction;
 			cout << "Выберите тип сортировки: bubble, selection, insert" << endl;
 			cin >> type;
+			/*scanf_s("%s", type);*/
 			cout << "1 - по возрастанию, 0 - по убыванию" << endl;
 			cin >> direction;
 
 			sort(a, 6, type, direction);
-			
+
 			for (int i = 0; i < 6; i++)
 				cout << a[i] << " ";
 			cout << endl << endl;
 
 			sort(b, 6, type, direction);
 			for (int i = 0; i < 6; i++)
-				cout << a[i] << " ";
+			cout << a[i] << " ";
 			cout << endl << endl;
-		}
-		break;
-		case 7:
-		{
-			
-			/*char type[7];
-			bool direction;
-			cout << "Выберите тип сортировки: bubble, selection, insert" << endl;
-			cin >> type;
-
-			if (type == "bubble") cout << direction << endl;
-			else cout << type << endl;*/
-			
 		}
 		break;
 		case 5:
